@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from 'components/header';
 import Footer from 'components/footer';
 import Box from '@mui/material/Box';
@@ -16,23 +16,28 @@ import Container from '@mui/material/Container';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Avatar from '@mui/material/Avatar';
 import { green, pink } from '@mui/material/colors';
-export default function SalesForceDevelopment({ data }) {
-  const [page, setPage] = useState(1);
-  const itemsPerPage = 6;
+import Link from 'next/link';
+export default function SalesForceDevelopment({ data, datafull }) {
+  const [dataIndex, setDataIndex] = useState(0);
+  console.log('dataIndex', dataIndex);
 
-  const startIndex = (page - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  // const totalPages = Math.ceil(filterData.length / itemsPerPage);
-  const goToPage = (pageNumber) => {
-    if (pageNumber <= totalPages && pageNumber > 0) {
-      setPage(pageNumber);
-      window.scrollTo(0, 0);
-    }
-  };
+  const itemsPerPage = 1;
+  console.log('datafull', datafull[dataIndex]);
+  console.log('data', data);
+
+  const totalPages = datafull.length;
+
+  useEffect(() => {
+    const index = datafull.findIndex((item) => item.id === data[0].id);
+    console.log('dataIndex', index);
+    setDataIndex(index);
+  }, []);
 
   return (
     <div>
-      <Head></Head>
+      <Head>
+        <link rel='icon' href='/favicon.png' />
+      </Head>
       <Header />
       <section
         className={`sectionBox whyUsBox salesForceServices2 blog news my-[50px] `}
@@ -51,9 +56,9 @@ export default function SalesForceDevelopment({ data }) {
                       gutterBottom
                       variant='h1'
                       component='h2'
-                      className='w-fit pl10 border rounded-2xl flex items-center justify-center p-5  hover:bg-[#0047AB] hover:text-white transition-all ease-in '
+                      className='w-fit pl10 border rounded-2xl flex items-center justify-center p-5  hover:bg-[#f50057] hover:text-white transition-all ease-in '
                     >
-                      {post['title']['rendered']}
+                      {post['title']['rendered'].replace(/&#8217;/g, "'")}
                     </Typography>
                   </div>
 
@@ -67,38 +72,39 @@ export default function SalesForceDevelopment({ data }) {
                           <div className=' w-[34rem]'>
                             {/**Image Div */}
                             <img
-                              className='h-full rounded-xl w-[34rem]'
+                              className='h-full rounded-xl w-fit'
                               src={
                                 post['_embedded']['wp:featuredmedia'][0][
                                   'source_url'
                                 ]
                               }
                             />
-                            {/**Image below section Category and User,Avtar */}
-                            <div className='flex justify-between items-baseline py-3 '>
-                              <div className='text-gray-400 flex gap-2'>
-                                <Avatar
-                                  src='/broken-image.jpg'
-                                  className='h-6 w-6'
-                                />
-                                <p>{post['_embedded']['author'][0]['name']}</p>
-                              </div>
-                              <Button
-                                href={`/blog/${post['slug']}.html`}
-                                className='bgRed white  poppin ml30 normalCase   min-h-7 w-auto text-center'
-                              >
-                                {post['_embedded']['wp:term'][0][0]['name']}
-                              </Button>
-                            </div>
                           </div>
                         </div>
                         {/**content */}
-                        <div className='Content'>
+                        <div className='Content max-w-7xl md:px-10 mt-10'>
+                          {/**Image below section Category and User,Avtar */}
+                          <div className='md:flex md:justify-between items-baseline whitespace-nowrap w-full'>
+                            <div className='text-gray-400 flex gap-2'>
+                              <Avatar
+                                src='/broken-image.jpg'
+                                className='h-6 w-6'
+                              />
+                              <p>{post['_embedded']['author'][0]['name']}</p>
+                            </div>
+                            <Button
+                              href={`/blog/${post['slug']}.html`}
+                              className='bgRed white  poppin  normalCase font-semibold  min-h-7 w-auto text-center md:mr-5'
+                            >
+                              {post['_embedded']['wp:term'][0][0]['name']}
+                            </Button>
+                          </div>
+                          {/**contenten inserted here */}
                           <Typography
                             gutterBottom
                             variant='h5'
                             component='div'
-                            className='w100 pl30 text-3xl'
+                            className='w100  text-3xl'
                           >
                             <div
                               dangerouslySetInnerHTML={{
@@ -136,15 +142,31 @@ export default function SalesForceDevelopment({ data }) {
               gap: 20,
             }}
           >
-            <ChevronLeftIcon
-              style={{ cursor: 'pointer' }}
-              onClick={() => goToPage(page - 1)}
-            />
-            <Avatar sx={{ bgcolor: pink[500] }}>{page}</Avatar>
-            <ChevronRightIcon
-              onClick={() => goToPage(page + 1)}
-              style={{ cursor: 'pointer' }}
-            />
+            <Link
+              href={`/blog/${
+                datafull[dataIndex - 1 >= 0 ? dataIndex - 1 : 0]['slug']
+              }.html`}
+              className='no-underline cursor-pointer flex  border rounded-lg justify-center items-center p-1 hover:bg-slate-950/5 '
+            >
+              <ChevronLeftIcon
+                style={{ cursor: 'pointer' }}
+                // onClick={() => goToPage((dataIndex - 1) % datafull.length)}
+              />
+              <p className='Poppins font-semibold no-underline'>Pre</p>
+            </Link>
+
+            <Link
+              href={`/blog/${
+                datafull[(dataIndex + 1) % datafull.length]['slug']
+              }.html`}
+              className='flex  border rounded-lg justify-center items-center p-1 hover:bg-slate-950/5'
+            >
+              <p className='Poppins font-semibold '>Next</p>
+              <ChevronRightIcon
+                // onClick={() => goToPage((dataIndex + 1) % datafull.length)}
+                style={{ cursor: 'pointer' }}
+              />
+            </Link>
           </div>
         </Container>
       </section>
@@ -155,7 +177,7 @@ export default function SalesForceDevelopment({ data }) {
           className='white pb15 pt15 poppin'
           component='div'
         >
-          Sign Up For a Free Consultation With Our Experts Today.
+          Sign Up For a Free Consultation With Our Experts Today!
         </Typography>
         <Button
           href='/contact-us.html'
@@ -172,7 +194,14 @@ export default function SalesForceDevelopment({ data }) {
 
 export async function getStaticPaths() {
   const res = await fetch(
-    'https://mydryve.co/InfoDriveBlog/wp-json/wp/v2/posts?_embed'
+    `https://mydryve.co/InfoDriveBlog/wp-json/wp/v2/posts?_embed`,
+    {
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        Pragma: 'no-cache',
+        Expires: 0,
+      },
+    }
   );
   const posts = await res.json();
 
@@ -189,8 +218,12 @@ export async function getStaticProps({ params }) {
   const res = await fetch(
     `https://mydryve.co/InfoDriveBlog/wp-json/wp/v2/posts?_embed&slug=${params.slug}`
   );
+  const res1 = await fetch(
+    `https://mydryve.co/InfoDriveBlog/wp-json/wp/v2/posts?_embed`
+  );
   const data = await res.json();
+  const datafull = await res1.json();
 
   // Pass data to the page via props
-  return { props: { data } };
+  return { props: { data, datafull } };
 }

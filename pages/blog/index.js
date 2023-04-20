@@ -74,39 +74,7 @@ export default function SalesForceDevelopment({ data }) {
   return (
     <div>
       <Head>
-        <title>
-          SEO Service Provider & Company in Singapore, Malaysia, and India
-        </title>
-        <meta
-          name='description'
-          content='InfoDrive Solutions is a leading search engine optimization company offering expert SEO services in Singapore, Malaysia, and India. As a top SEO consultant, we provide customized strategies for small businesses and startups to improve their online visibility.'
-        />
-        <meta
-          name='keywords'
-          content='Search Engine Optimization Company, SEO Service Provider in Singapore, SEO Consultant in Singapore, SEO Company Near Me, SEO Strategy Provider in Singapore, SEO Company in Malaysia, SEO Company in Kuala Lumpur, SEO Services in Singapore, SEO Consultant in Malaysia, SEO Service Provider in Malaysia'
-        />
-        <link
-          rel='canonical'
-          href='https://infodrive-solutions.com/search-engine-optimization.html'
-        />
-        <meta
-          property='og:title'
-          content='SEO Service Provider & Company in Singapore, Malaysia, and India'
-        />
-        <meta
-          property='og:image'
-          content='https://c5cea5.n3cdn1.secureserver.net/wp-content/uploads/2020/09/INFORDRIVE-LOGO-FINAL-01-1-1-1-1.png'
-        />
         <link rel='icon' href='/favicon.png' />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id=GTM-MB38MVS'+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-MB38MVS');`,
-          }}
-        />
       </Head>
       <noscript>
         <iframe
@@ -117,42 +85,39 @@ export default function SalesForceDevelopment({ data }) {
         ></iframe>
       </noscript>
       <Header />
-      <section
-        className={`sectionBox pt30 pb30 textAlignCenter blog upperCase`}
-      >
-        <br />
-        <br />
-        <Typography gutterBottom variant='h1' component='h1' className='w100 '>
-          All Posts
-        </Typography>
-        {/**  category menu */}
+      <section className={` textAlignCenter blog upperCase mt-10 Poppins `}>
+        <div className='container mx-auto  bg-white p-5 Poppins rounded-lg shadow-sm max-w-6xl'>
+          <h1 className='w100 font-extrabold text-4xl text-blue-950 Poppins '>
+            All Posts
+          </h1>
 
-        <div className='category flex flex-wrap gap-2 mt-10  mx-auto'>
-          <div
-            className={`button poppin hover:bg-[#f50057] lg:h-10 h-fit w-fit p-2  poppin min-w-[150px] text-center border cursor-pointer transition-all ease-out  hover:text-white hover:border-white rounded-lg ${
-              active === 'All Category'
-                ? 'bg-[#f50057] text-white border-white'
-                : 'text-gray-500 border-gray-500'
-            }`}
-            onClick={() => handleButtonClick('All Category')}
-          >
-            All Category
-          </div>
-          {uniqueCategory.map((post, index) => (
+          {/**  category menu */}
+
+          <div className='category flex flex-wrap  md:gap-2 gap-5 mt-5  mx-auto md:pl-14 '>
             <div
-              className={`button poppin hover:bg-[#f50057] md:h-10 h-fit w-fit p-2  poppin min-w-[150px] cursor-pointer text-center border transition-all ease-out  hover:text-white hover:border-white rounded-lg ${
-                active === post
+              className={`button poppin hover:bg-[#f50057]  md:h-fit w-fit p-2  poppin min-w-[150px] text-center border cursor-pointer transition-all ease-out  hover:text-white hover:border-white rounded-lg  ${
+                active === 'All Category'
                   ? 'bg-[#f50057] text-white border-white'
                   : 'text-gray-500 border-gray-500'
               }`}
-              onClick={() => handleButtonClick(post)}
+              onClick={() => handleButtonClick('All Category')}
             >
-              {post}
+              All Category
             </div>
-          ))}
+            {uniqueCategory.map((post, index) => (
+              <div
+                className={`button poppin hover:bg-[#f50057] md:h-10 h-fit w-fit p-2  poppin min-w-[150px] cursor-pointer text-center border transition-all ease-out  hover:text-white hover:border-white rounded-lg ${
+                  active === post
+                    ? 'bg-[#f50057] text-white border-white'
+                    : 'text-gray-500 border-gray-500'
+                }`}
+                onClick={() => handleButtonClick(post)}
+              >
+                {post}
+              </div>
+            ))}
+          </div>
         </div>
-
-        <br />
       </section>
       {/** blog section */}
       <section className={`sectionBox whyUsBox salesForceServices2 blog news `}>
@@ -182,10 +147,13 @@ export default function SalesForceDevelopment({ data }) {
                               className='h-full rounded-xl'
                               style={{ width: '100%' }}
                               src={
-                                post['_embedded']['wp:featuredmedia'][0][
-                                  'source_url'
-                                ]
+                                post['_embedded']['wp:featuredmedia'][0]
+                                  ? post['_embedded']['wp:featuredmedia'][0][
+                                      'source_url'
+                                    ]
+                                  : 'https://example.com/placeholder-image.jpg'
                               }
+                              alt='infodrive blog post'
                             />
                           </a>
                         </div>
@@ -194,14 +162,14 @@ export default function SalesForceDevelopment({ data }) {
                   </Grid>
                   {/** blog right  section */}
                   <Grid item xs={6}>
-                    <div className='imgHeader flex  flex-wrap grid-col-1 items-baseline  justify-between pl-[30px] py-3 '>
+                    <div className='imgHeader flex  flex-wrap grid-col-1 items-baseline  justify-between md:pl-[30px] py-3 '>
                       <div className='text-gray-400 flex gap-2'>
                         <Avatar src='/broken-image.jpg' className='h-6 w-6' />
                         <p>{post['_embedded']['author'][0]['name']}</p>
                       </div>
                       <Button
                         href={`/blog/${post['slug']}.html`}
-                        className='bgRed white  poppin ml30 normalCase   min-h-7 w-auto text-center'
+                        className='bgRed white  poppin md:ml-[30px] normalCase   min-h-7 w-auto text-center'
                       >
                         {post['_embedded']['wp:term'][0][0]['name']}
                       </Button>
@@ -212,11 +180,16 @@ export default function SalesForceDevelopment({ data }) {
                           gutterBottom
                           variant='h3'
                           component='h2'
-                          className='w100 pl30 text-justify'
+                          className='w100 md:pl-[30px] '
                         >
                           <div>
                             <a href={`/blog/${post['slug']}.html`}>
-                              <h3>{post['title']['rendered']}</h3>{' '}
+                              <h3>
+                                {post['title']['rendered'].replace(
+                                  /&#8217;/g,
+                                  "'"
+                                )}
+                              </h3>
                             </a>
                           </div>
                         </Typography>
@@ -224,7 +197,7 @@ export default function SalesForceDevelopment({ data }) {
                           gutterBottom
                           variant='h5'
                           component='div'
-                          className='w100 pl30'
+                          className='w100 md:pl-[30px] text-start'
                         >
                           <div
                             dangerouslySetInnerHTML={{
@@ -232,15 +205,18 @@ export default function SalesForceDevelopment({ data }) {
                             }}
                           ></div>
                         </Typography>
-                        {/* <Button
-                          href={`/blog/${post['slug']}.html`}
-                          className='bgRed white pl15 pr15 poppin ml30 normalCase'
-                        >
-                          Read more
-                        </Button> */}
-                        <h3 className='pr15 poppin ml30 normalCase'>
-                          Publish Date: {dateFormat(post['date'], 'fullDate')}
-                        </h3>
+                        {/* puslish date and remore*/}
+                        <div className='flex '>
+                          <h3 className='pr15 poppin md:ml-[30px] font-semibold'>
+                            Publish Date: {dateFormat(post['date'], 'fullDate')}
+                          </h3>
+                          {/* <Button
+                            href={`/blog/${post['slug']}.html`}
+                            className='pl15 pr15 poppin  normalCase shadow-md text-gray-600 ml-20 bg-slate-950/5 rounded-lg mb-10 font-medium'
+                          >
+                            Read more
+                          </Button>*/}
+                        </div>
                       </CardContent>
                     </Card>
                   </Grid>
@@ -304,13 +280,50 @@ export default function SalesForceDevelopment({ data }) {
     </div>
   );
 }
-export async function getStaticProps() {
+// export async function getStaticProps() {
+//   const res = await fetch(
+//     `https://mydryve.co/InfoDriveBlog/wp-json/wp/v2/posts?_embed`,
+//     {
+//       headers: {
+//         'Cache-Control': 'no-cache, no-store, must-revalidate',
+//         Pragma: 'no-cache',
+//         Expires: 0,
+//       },
+//     }
+//   );
+//   const data = await res.json();
+//   console.log('API blog', data);
+//   return { props: { data } };
+// }
+
+// This gets called on every request
+export async function getServerSideProps() {
   // Fetch data from external API
   const res = await fetch(
-    `https://mydryve.co/InfoDriveBlog/wp-json/wp/v2/posts?_embed&&limit=2&categories=3,4,5,6,7,8,9,10,11,12,13`
+    `https://mydryve.co/InfoDriveBlog/wp-json/wp/v2/posts?_embed`
   );
   const data = await res.json();
-  console.log('API blog', data);
+
   // Pass data to the page via props
   return { props: { data } };
 }
+
+// export async function getServerSideProps() {
+//   const res = await fetch(
+//     `https://mydryve.co/InfoDriveBlog/wp-json/wp/v2/posts?_embed`,
+//     {
+//       headers: {
+//         'Cache-Control': 'no-cache',
+//         Pragma: 'no-cache',
+//         'If-Modified-Since': '0',
+//         'If-None-Match': '',
+//         'Cache-Control': 'no-store',
+//         Expires: '0',
+//         'X-Date': new Date().toISOString(),
+//       },
+//     }
+//   );
+//   const data = await res.json();
+//   console.log('API blog', data);
+//   return { props: { data } };
+// }
