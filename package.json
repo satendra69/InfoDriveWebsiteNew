@@ -1,11 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "export": "npm run build && next export _static",
-    "exportp": "npm run build && next export "
+     "dev": "next dev",
+  "build": "next build",
+  "start": "next start"
   },
   "engines": {
     "node": "20.x",
