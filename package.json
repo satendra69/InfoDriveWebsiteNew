@@ -7,6 +7,10 @@
     "export": "npm run build && next export _static",
     "exportp": "npm run build && next export "
   },
+  "engines": {
+    "node": "20.x",
+    "npm": "9.x"
+  },
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
