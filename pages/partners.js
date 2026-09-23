@@ -233,7 +233,7 @@ export default function SalesForceDevelopment() {
           </motion.div>
         </div>
       </section>
-
+      
       <section className={`p5 newsectionbox -mt-14 md:mt-0`}>
         <div className="max-w-5xl container mx-auto border-red-600 md:flex items-center  justify-between">
           <motion.div
@@ -243,10 +243,41 @@ export default function SalesForceDevelopment() {
             className="right flex flex-col gap-5 md:w-[70%] "
           >
             <h2 className="font-extrabold text-2xl md:whitespace-nowrap">
-              Odoo: Revolutionizing Business Management
+              Oracle: Empowering Business Transformation
             </h2>
             {/* <h3 className="font-bold">Your Official Odoo Partner!</h3> */}
             <p className="text-start md:text-justify mr-5">
+              As a trusted partner of Oracle, a global leader in enterprise technology and business solutions, we're equipped to help businesses streamline operations, enhance productivity, and drive digital transformation. With Oracle's comprehensive suite of solutions for enterprise resource planning, finance, supply chain management, human resources, and more, we empower our clients to optimize their business processes and make data-driven decisions. Our experienced Oracle consultants possess the knowledge and expertise to implement and customize Oracle solutions tailored to your business requirements, ensuring a seamless transition, improved efficiency, and ongoing support.
+              <br />
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className="left basis-1/2 "
+          >
+            <img
+              src="images/Oracle.png"
+              alt="Picture of the author"
+              className=""
+            />
+          </motion.div>
+        </div>
+      </section>
+      <section className={`p5  newsectionbox -mt-14 md:mt-0`}>
+        <div className="max-w-5xl container mx-auto border-red-600 md:flex items-center justify-between md:gap-5">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className="right flex flex-col gap-5 basis-1/2 md:mt-5"
+          >
+            <h2 className="font-extrabold text-2xl md:whitespace-nowrap">
+              Odoo: Revolutionizing Business Management
+            </h2>
+            {/* <h3 className="font-bold">Your Official Odoo Partner!</h3> */}
+            <p className="text-start md:text-justify" style={{ zIndex: 1 }}>
               As a proud partner of Odoo, the leading provider of open-source
               business management software, we're equipped to help businesses of
               all sizes streamline their operations and drive growth. With
@@ -256,14 +287,14 @@ export default function SalesForceDevelopment() {
               consultants possess the knowledge and experience to implement and
               customize Odoo solutions tailored to your business requirements,
               ensuring a seamless transition and ongoing support.
-              <br />
             </p>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            className="left md:basis-1/2 md:order-first order-last -mt-14 md:mt-0"
+            style={{ zIndex: 1 }}
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="left basis-1/2 "
           >
             <img
               src="images/odoop.png"

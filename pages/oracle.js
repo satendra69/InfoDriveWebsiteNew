@@ -45,7 +45,7 @@ function ORACLE() {
       label: 'Business Advantage',
     },
     {
-      id: 'why-digile',
+      id: 'why-infoDrive',
       label: 'Why InfoDrive',
     },
     {
@@ -348,12 +348,12 @@ function ORACLE() {
       <Head>
 
         <title>
-          Oracle Solutions | Digile
+          Oracle Solutions | InfoDrive
         </title>
 
         <meta
           name="description"
-          content="Oracle cloud modernization, enterprise integration and digital transformation solutions from Digile."
+          content="Oracle cloud modernization, enterprise integration and digital transformation solutions from InfoDrive."
         />
 
         <link
@@ -699,7 +699,7 @@ function ORACLE() {
             ================================================ */}
 
             <section
-              id="why-digile"
+              id="why-infoDrive"
               className="oracle-content-section"
             >
 
@@ -880,10 +880,7 @@ function ORACLE() {
 
             <div className="oracle-impact-overlay">
 
-              <span>
-                digile
-              </span>
-
+              
               <div>
                 Real-World
               </div>
