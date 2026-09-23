@@ -1056,7 +1056,7 @@ function ORACLE() {
 
             {/* SERVICENOW */}
 
-            <div className="oracle-solution-card">
+            {/* <div className="oracle-solution-card">
 
               <div className="
                 solution-logo
@@ -1097,7 +1097,7 @@ function ORACLE() {
 
               </button>
 
-            </div>
+            </div> */}
 
 
           </div>
