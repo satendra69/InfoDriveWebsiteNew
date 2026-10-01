@@ -240,7 +240,7 @@ function ORACLE() {
 
     {
       question:
-        'What Makes Digile’s Oracle Approach Different?',
+        'What Makes InfoDrive Oracle Approach Different?',
 
       answer:
         'InfoDrive combines Oracle expertise, enterprise integration capabilities, modernization experience, and continuous optimization to help organizations achieve lasting business value.',
@@ -658,7 +658,7 @@ function ORACLE() {
               <p className="oracle-intro">
 
                 When your systems work together,
-                your business moves faster. Digile
+                your business moves faster. InfoDrive
                 helps you unify data, streamline
                 operations, and create the visibility
                 needed for confident decision-making
